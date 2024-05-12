@@ -13,6 +13,7 @@ import me.gsqfi.poketeams.poketeams.Main;
 import me.gsqfi.poketeams.poketeams.PlayerData;
 import me.gsqfi.poketeams.poketeams.helper.StorageHelper;
 import me.gsqfi.poketeams.poketeams.helper.StringHelper;
+import net.minecraft.advancements.critereon.UsedEnderEyeTrigger;
 import net.minecraft.nbt.JsonToNBT;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -114,6 +115,7 @@ public class TeamsGui extends ListenerInvHolder {
                 //替换队伍
                 PlayerPartyStorage party = Pixelmon.storageManager.getParty(player.getUniqueId());
                 PCStorage pc = Pixelmon.storageManager.getPCForPlayer(player.getUniqueId());
+                boolean b = false;
                 for (Pokemon pokemon : party.getAll()) {
                     if (pokemon != null) {
                         party.set(pokemon.getPosition(),null);
@@ -124,11 +126,18 @@ public class TeamsGui extends ListenerInvHolder {
                 for (int i = 0; i < this.pokemons.size(); i++) {
                     Pokemon pokemon = this.pokemons.get(i);
                     if (pokemon != null) {
+                        if (pokemon.isInRanch()){
+                            if (!b){
+                                b = true;
+                            }
+                            continue;
+                        }
                         pc.set(pokemon.getPosition(),null);
                         party.set(i, pokemon);
                     }
                 }
                 player.closeInventory();
+                if (b) player.sendMessage(StringHelper.configMsg("team_in_ranch"));
                 player.sendMessage(StringHelper.configMsg("team_replaced"));
                 return;
             }
