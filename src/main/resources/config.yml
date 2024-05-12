@@ -1,0 +1,41 @@
+##宝可梦物品格式以下内插件会提供宝可梦的{box}和{order}
+pokemon_item_format:
+  name: "&5&l%pctools_{box}_{order}_localizedname%"
+  lore:
+    - "&b▣ 基本信息"
+    - "&3属性: &7%pctools_{box}_{order}_types% &f| &3蛋组: &7%pctools_{box}_{order}_egggroup%"
+    - "&3性格: &7%pctools_{box}_{order}_nature% &f| &3特性: &7%pctools_{box}_{order}_ability%"
+    - "&3性别: &7%pctools_{box}_{order}_gender% &f| &3道具: &7%pctools_{box}_{order}_helditem%"
+    - "&3闪光: &7%pctools_{box}_{order}_shiny% &f| &3形态: &7%pctools_{box}_{order}_form_localizedname%"
+    - "&3体型: &7%pctools_{box}_{order}_growth% &f| &3球种: &7%pctools_{box}_{order}_caughtball%"
+    - "&b▣ 种族信息&7 (总和：%pctools_{box}_{order}_basetotal%)"
+    - "&3血量: &7%pctools_{box}_{order}_basestats_hp% &f| &3攻击: &7%pctools_{box}_{order}_basestats_at% &f| &3防御: &7%pctools_{box}_{order}_basestats_df%"
+    - "&3特攻: &7%pctools_{box}_{order}_basestats_sa% &f| &3特防: &7%pctools_{box}_{order}_basestats_sd% &f| &3速度: &7%pctools_{box}_{order}_basestats_sp%"
+    - "&b▣ 个体信息&7 (%pctools_{box}_{order}_ivstotal%/186)"
+    - "&3血量: &7%pctools_{box}_{order}_ivs_hp% &f| &3攻击: &7%pctools_{box}_{order}_ivs_at% &f| &3防御: &7%pctools_{box}_{order}_ivs_df%"
+    - "&3特攻: &7%pctools_{box}_{order}_ivs_sa% &f| &3特防: &7%pctools_{box}_{order}_ivs_sd% &f| &3速度: &7%pctools_{box}_{order}_ivs_sp%"
+    - "&b▣ 努力信息&7 (%pctools_{box}_{order}_evstotal%/510)"
+    - "&3血量: &7%pctools_{box}_{order}_evs_hp% &f| &3攻击: &7%pctools_{box}_{order}_evs_at% &f| &3防御: &7%pctools_{box}_{order}_evs_df%"
+    - "&3特攻: &7%pctools_{box}_{order}_evs_sa% &f| &3特防: &7%pctools_{box}_{order}_evs_sd% &f| &3速度: &7%pctools_{box}_{order}_evs_sp%"
+    - "&b▣ 能力信息&7 (总和：%pctools_{box}_{order}_statstotal%)"
+    - "&3血量: &7%pctools_{box}_{order}_stats_hp% &f| &3攻击: &7%pctools_{box}_{order}_stats_at% &f| &3防御: &7%pctools_{box}_{order}_stats_df%"
+    - "&3特攻: &7%pctools_{box}_{order}_stats_sa% &f| &3特防: &7%pctools_{box}_{order}_stats_sd% &f| &3速度: &7%pctools_{box}_{order}_stats_sp%"
+    - "&b▣ 技能信息"
+    - "&3技能: &7%pctools_{box}_{order}_moveset_0% &f| &7%pctools_{box}_{order}_moveset_1% &f| &7%pctools_{box}_{order}_moveset_2% &f| &7%pctools_{box}_{order}_moveset_3% "
+    - "&b▣ 位置信息"
+    - "&3页: {box}&f| &3位置:{order}"
+msg:
+  help:
+    - 'HELP'
+    - '/poketeams help 帮助'
+    - '/poketeams create [队伍名] 创建一个队伍'
+    - '/poketeams list 查看自己所有的队伍'
+    - '/poketeams reload 重载配置'
+    - '/poketeams see 以GUI方式查看队伍内的精灵'
+  non_player: '&c你不是玩家'
+  team_already_exists: '&c该队伍名已存在'
+  team_not_exist: '&c该队伍不存在'
+  missing_poke: '&c队伍有缺失宝可梦'
+  team_replaced: '&a退伍已替换,原队伍已经放入PC'
+  team_removed: '&a队伍已经删除!'
+  reach_maximum_team: '&a你的队伍数量已达上线'

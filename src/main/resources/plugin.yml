@@ -1,0 +1,22 @@
+name: ${rootProject.name}
+main: ${group}
+version: ${version}
+depend:
+  - FICore
+  - PlaceholderAPI
+softdepend:
+  - PCTools
+commands:
+  poketeams:
+    description: main cmd
+permissions:
+  poketeams.cmd.help:
+    default: true
+  poketeams.cmd.see:
+    default: true
+  poketeams.cmd.list:
+    default: true
+  poketeams.cmd.create:
+    default: true
+  poketeams.cmd.reload:
+    default: op
