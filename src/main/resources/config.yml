@@ -44,3 +44,4 @@ msg:
   team_removed: '&a队伍已经删除!'
   reach_maximum_team: '&a你的队伍数量已达上线'
   team_in_ranch: '&c队伍中有宝可梦位于牧场,该精灵没有被调出'
+  create_team: '&a队伍创建成功!'

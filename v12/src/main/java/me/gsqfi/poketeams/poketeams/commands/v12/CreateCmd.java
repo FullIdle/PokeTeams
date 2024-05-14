@@ -80,7 +80,7 @@ public class CreateCmd extends AbstractTabExecutor {
             }
             PlayerData.getConfig().set(player.getName()+"."+name,list);
             PlayerData.save();
-            player.sendMessage("§aOK");
+            sender.sendMessage(StringHelper.configMsg("msg.create_team"));
             return false;
         }
 
