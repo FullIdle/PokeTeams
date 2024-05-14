@@ -1,4 +1,4 @@
-package me.gsqfi.poketeams.poketeams.helper;
+package me.gsqfi.poketeams.poketeams.helper.v12;
 
 import com.pixelmonmod.pixelmon.Pixelmon;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;

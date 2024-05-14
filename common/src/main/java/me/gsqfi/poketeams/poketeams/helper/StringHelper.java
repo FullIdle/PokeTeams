@@ -1,7 +1,7 @@
 package me.gsqfi.poketeams.poketeams.helper;
 
 import me.clip.placeholderapi.PlaceholderAPI;
-import me.gsqfi.poketeams.poketeams.Main;
+import me.gsqfi.poketeams.poketeams.Data;
 import org.bukkit.OfflinePlayer;
 
 public class StringHelper {
@@ -14,6 +14,6 @@ public class StringHelper {
     }
 
     public static String configMsg(String path){
-        return colorCodeReplace(Main.getInstance().getConfig().getString("msg."+path));
+        return colorCodeReplace(Data.plugin.getConfig().getString("msg."+path));
     }
 }

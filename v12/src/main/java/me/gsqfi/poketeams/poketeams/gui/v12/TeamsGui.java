@@ -1,4 +1,4 @@
-package me.gsqfi.poketeams.poketeams.gui;
+package me.gsqfi.poketeams.poketeams.gui.v12;
 
 import com.pixelmonmod.pixelmon.Pixelmon;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
@@ -9,12 +9,10 @@ import com.pixelmonmod.pixelmon.storage.PlayerPartyStorage;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import me.fullidle.ficore.ficore.common.api.ineventory.ListenerInvHolder;
-import me.gsqfi.poketeams.poketeams.Main;
+import me.gsqfi.poketeams.poketeams.Data;
 import me.gsqfi.poketeams.poketeams.PlayerData;
-import me.gsqfi.poketeams.poketeams.helper.StorageHelper;
+import me.gsqfi.poketeams.poketeams.helper.v12.StorageHelper;
 import me.gsqfi.poketeams.poketeams.helper.StringHelper;
-import net.minecraft.advancements.critereon.UsedEnderEyeTrigger;
-import net.minecraft.nbt.JsonToNBT;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -27,14 +25,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.IntStream;
 
 @Getter
 public class TeamsGui extends ListenerInvHolder {
     private final Inventory inventory;
     private final Player player;
     private final String team_name;
-    private ArrayList<Pokemon> pokemons = new ArrayList<>();
+    private final ArrayList<Pokemon> pokemons = new ArrayList<>();
 
     public TeamsGui(Player player,String team_name) {
         this.team_name = team_name;
@@ -156,14 +153,14 @@ public class TeamsGui extends ListenerInvHolder {
      */
     private ItemStack getPokemonItemStack(Pokemon pokemon){
         StoragePosition position = pokemon.getPosition();
-        FileConfiguration config = Main.getInstance().getConfig();
+        FileConfiguration config = Data.plugin.getConfig();
         ArrayList<String> lore = new ArrayList<>();
         for (String lore_info : config.getStringList("pokemon_item_format.lore")) {
-            lore.add(formatString(lore_info,position));
+            lore.add(formatString(lore_info.replace("{pokemon_name}",pokemon.getLocalizedName()),position));
         }
         ItemStack itemStack = CraftItemStack.asBukkitCopy((net.minecraft.server.v1_12_R1.ItemStack) ((Object) ItemPixelmonSprite.getPhoto(pokemon)));
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(formatString(config.getString("pokemon_item_format.name"),position));
+        itemMeta.setDisplayName(formatString(config.getString("pokemon_item_format.name").replace("{pokemon_name}",pokemon.getLocalizedName()),position));
         itemMeta.setLore(lore);
         itemStack.setItemMeta(itemMeta);
         return itemStack;
@@ -173,8 +170,8 @@ public class TeamsGui extends ListenerInvHolder {
      * 格式化宝可梦字符串
      */
     private String formatString(String str,StoragePosition position){
-        return StringHelper.papi(player, StringHelper.colorCodeReplace(str).replace("{box}",
-                String.valueOf(position.box)).replace("{order}",
-                String.valueOf(position.order)));
+        return StringHelper.papi(player, StringHelper.colorCodeReplace(str).
+                replace("{box}", String.valueOf(position.box)).
+                replace("{order}", String.valueOf(position.order)));
     }
 }

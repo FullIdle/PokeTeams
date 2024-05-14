@@ -1,4 +1,4 @@
-package me.gsqfi.poketeams.poketeams.gui;
+package me.gsqfi.poketeams.poketeams.gui.v12;
 
 import com.google.common.collect.Lists;
 import lombok.Getter;

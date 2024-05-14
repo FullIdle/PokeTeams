@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.SneakyThrows;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 
@@ -16,7 +17,7 @@ public class PlayerData {
     @SneakyThrows
     public static void init(){
         clear();
-        Main plugin = Main.getInstance();
+        JavaPlugin plugin = Data.plugin;
 
         file = new File(plugin.getDataFolder(),"player_data.yml");
         if (!file.exists()) {

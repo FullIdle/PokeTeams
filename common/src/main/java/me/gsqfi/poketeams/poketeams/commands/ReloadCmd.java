@@ -1,6 +1,6 @@
 package me.gsqfi.poketeams.poketeams.commands;
 
-import me.gsqfi.poketeams.poketeams.Main;
+import me.gsqfi.poketeams.poketeams.Data;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
@@ -14,7 +14,7 @@ public class ReloadCmd extends AbstractTabExecutor{
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        Main.getInstance().reloadConfig();
+        Data.plugin.reloadConfig();
         sender.sendMessage("§aReload successful!");
         return false;
     }

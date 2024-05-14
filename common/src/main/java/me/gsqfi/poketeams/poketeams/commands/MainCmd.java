@@ -18,9 +18,6 @@ public class MainCmd extends AbstractTabExecutor {
     private void initSubCmd() {
         new HelpCmd(this);
         new ReloadCmd(this);
-        new SeeCmd(this);
-        new ListCmd(this);
-        new CreateCmd(this);
     }
 
     @Override

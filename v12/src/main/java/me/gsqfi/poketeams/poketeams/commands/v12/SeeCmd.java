@@ -1,8 +1,9 @@
-package me.gsqfi.poketeams.poketeams.commands;
+package me.gsqfi.poketeams.poketeams.commands.v12;
 
 import com.google.common.collect.Lists;
 import me.gsqfi.poketeams.poketeams.PlayerData;
-import me.gsqfi.poketeams.poketeams.gui.TeamsGui;
+import me.gsqfi.poketeams.poketeams.commands.AbstractTabExecutor;
+import me.gsqfi.poketeams.poketeams.gui.v12.TeamsGui;
 import me.gsqfi.poketeams.poketeams.helper.StringHelper;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -12,7 +13,7 @@ import org.bukkit.inventory.Inventory;
 import java.util.Collections;
 import java.util.List;
 
-public class SeeCmd extends AbstractTabExecutor{
+public class SeeCmd extends AbstractTabExecutor {
     public SeeCmd(AbstractTabExecutor superExecutor) {
         super(superExecutor, "see");
     }

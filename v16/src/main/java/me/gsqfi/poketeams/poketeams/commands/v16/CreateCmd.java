@@ -1,23 +1,21 @@
-package me.gsqfi.poketeams.poketeams.commands;
+package me.gsqfi.poketeams.poketeams.commands.v16;
 
-import com.pixelmonmod.pixelmon.Pixelmon;
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
-import com.pixelmonmod.pixelmon.storage.PlayerPartyStorage;
-import me.gsqfi.poketeams.poketeams.Main;
+import com.pixelmonmod.pixelmon.api.storage.PlayerPartyStorage;
+import com.pixelmonmod.pixelmon.api.storage.StorageProxy;
 import me.gsqfi.poketeams.poketeams.PlayerData;
+import me.gsqfi.poketeams.poketeams.commands.AbstractTabExecutor;
 import me.gsqfi.poketeams.poketeams.helper.StringHelper;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class CreateCmd extends AbstractTabExecutor{
+public class CreateCmd extends AbstractTabExecutor {
     public CreateCmd(AbstractTabExecutor superExecutor) {
         super(superExecutor, "create");
     }
@@ -48,7 +46,7 @@ public class CreateCmd extends AbstractTabExecutor{
                 sender.sendMessage(StringHelper.configMsg("team_already_exists"));
                 return false;
             }
-            PlayerPartyStorage party = Pixelmon.storageManager.getParty(player.getUniqueId());
+            PlayerPartyStorage party = StorageProxy.getParty(player.getUniqueId());
             Pokemon[] all = party.getAll();
             //判断队伍数量,是否能创建队伍
             String permission = "poketeams.cmd.create.";
