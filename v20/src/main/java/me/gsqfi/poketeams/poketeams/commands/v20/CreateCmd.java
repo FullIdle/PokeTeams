@@ -1,4 +1,4 @@
-package me.gsqfi.poketeams.poketeams.commands.v16;
+package me.gsqfi.poketeams.poketeams.commands.v20;
 
 import com.pixelmonmod.pixelmon.api.pokemon.Pokemon;
 import com.pixelmonmod.pixelmon.api.storage.PlayerPartyStorage;
@@ -46,7 +46,7 @@ public class CreateCmd extends AbstractTabExecutor {
                 sender.sendMessage(StringHelper.configMsg("team_already_exists"));
                 return false;
             }
-            PlayerPartyStorage party = StorageProxy.getParty(player.getUniqueId());
+            PlayerPartyStorage party = StorageProxy.getPartyNow(player.getUniqueId());
             Pokemon[] all = party.getAll();
             //判断队伍数量,是否能创建队伍
             String permission = "poketeams.cmd.create.";

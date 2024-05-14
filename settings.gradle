@@ -2,4 +2,5 @@ rootProject.name = 'PokeTeams'
 include 'common'
 include 'v12'
 include 'v16'
+include 'v20'
 

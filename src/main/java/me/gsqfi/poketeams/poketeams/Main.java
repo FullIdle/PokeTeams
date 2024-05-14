@@ -30,6 +30,11 @@ public class Main extends JavaPlugin {
                 new me.gsqfi.poketeams.poketeams.commands.v16.ListCmd(cmd);
                 new me.gsqfi.poketeams.poketeams.commands.v16.SeeCmd(cmd);
             }
+            if (mcVer.equalsIgnoreCase("1.20.2")){
+                new me.gsqfi.poketeams.poketeams.commands.v20.CreateCmd(cmd);
+                new me.gsqfi.poketeams.poketeams.commands.v20.ListCmd(cmd);
+                new me.gsqfi.poketeams.poketeams.commands.v20.SeeCmd(cmd);
+            }
         }
         PluginCommand command = getCommand(cmd.getName());
         command.setExecutor(cmd);
