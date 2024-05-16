@@ -70,14 +70,14 @@ public class TeamsListGui extends ListenerInvHolder {
         {
             ItemStack itemStack = new ItemStack(Material.ARROW);
             ItemMeta itemMeta = itemStack.getItemMeta();
-            itemMeta.setDisplayName("§3上一页");
+            itemMeta.setDisplayName(StringHelper.configLang("teams_list_gui_previous_page_button"));
             itemStack.setItemMeta(itemMeta);
             this.inventory.setItem(47,itemStack);
         }
         {
             ItemStack itemStack = new ItemStack(Material.ARROW);
             ItemMeta itemMeta = itemStack.getItemMeta();
-            itemMeta.setDisplayName("§3下一页");
+            itemMeta.setDisplayName(StringHelper.configLang("teams_list_gui_next_page_button"));
             itemStack.setItemMeta(itemMeta);
             this.inventory.setItem(51,itemStack);
         }
@@ -93,7 +93,7 @@ public class TeamsListGui extends ListenerInvHolder {
             int x = 0;
             for (int j = i*45; j < Math.min(keys.size(),(i+1)*45); j++) {
                 String name = keys.get(j);
-                itemMeta.setDisplayName(StringHelper.colorCodeReplace(name));
+                itemMeta.setDisplayName(StringHelper.configLang("teams_list_gui_team_name").replace("{team_name}",name));
                 itemStack.setItemMeta(itemMeta);
                 this.inventory.addItem(itemStack);
                 this.team_map.put(x,name);

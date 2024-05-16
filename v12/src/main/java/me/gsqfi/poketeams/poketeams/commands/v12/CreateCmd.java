@@ -6,10 +6,10 @@ import com.pixelmonmod.pixelmon.storage.PlayerPartyStorage;
 import me.gsqfi.poketeams.poketeams.PlayerData;
 import me.gsqfi.poketeams.poketeams.commands.AbstractTabExecutor;
 import me.gsqfi.poketeams.poketeams.helper.StringHelper;
+import me.gsqfi.poketeams.poketeams.helper.TemporaryHelper;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.permissions.PermissionAttachmentInfo;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +23,7 @@ public class CreateCmd extends AbstractTabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)){
-            sender.sendMessage(StringHelper.configMsg("non_player"));
+            sender.sendMessage(StringHelper.configLang("non_player"));
             return false;
         }
 
@@ -43,30 +43,16 @@ public class CreateCmd extends AbstractTabExecutor {
             String name = builder.toString();
             boolean containsData = PlayerData.getConfig().contains(player.getName());
             if (containsData &&PlayerData.getConfig().getConfigurationSection(player.getName()).contains(name)) {
-                sender.sendMessage(StringHelper.configMsg("team_already_exists"));
+                sender.sendMessage(StringHelper.configLang("team_already_exists"));
                 return false;
             }
             PlayerPartyStorage party = Pixelmon.storageManager.getParty(player.getUniqueId());
             Pokemon[] all = party.getAll();
-            //判断队伍数量,是否能创建队伍
-            String permission = "poketeams.cmd.create.";
-            if (!player.hasPermission(permission)||!player.isOp()){
-                int i = 0;
-                for (PermissionAttachmentInfo info : player.getEffectivePermissions()) {
-                    if (info.getPermission().startsWith(permission)) {
-                        int anInt = isInt(info.getPermission().replace(permission, ""));
-                        if (anInt != -1)
-                            i = Math.max(i,anInt);
-                    }
-                }
-                int y = 0;
-                if (!containsData){
-                    y = PlayerData.getConfig().getConfigurationSection(player.getName()).getKeys(true).size();
-                }
-                if (y >= i) {
-                    sender.sendMessage(StringHelper.configMsg("reach_maximum_team"));
-                    return false;
-                }
+
+            //是否可创建
+            if (!TemporaryHelper.canCreate(player)) {
+                sender.sendMessage(StringHelper.configLang("reach_maximum_team"));
+                return false;
             }
 
             //创建队伍
@@ -80,7 +66,7 @@ public class CreateCmd extends AbstractTabExecutor {
             }
             PlayerData.getConfig().set(player.getName()+"."+name,list);
             PlayerData.save();
-            sender.sendMessage(StringHelper.configMsg("create_team"));
+            sender.sendMessage(StringHelper.configLang("create_team"));
             return false;
         }
 
@@ -91,13 +77,5 @@ public class CreateCmd extends AbstractTabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         return Collections.emptyList();
-    }
-
-    public static int isInt(String v){
-        try {
-            return Integer.parseInt(v);
-        } catch (NumberFormatException e) {
-            return -1;
-        }
     }
 }

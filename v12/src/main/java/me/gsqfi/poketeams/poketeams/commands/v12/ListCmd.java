@@ -18,7 +18,7 @@ public class ListCmd extends AbstractTabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)){
-            sender.sendMessage(StringHelper.configMsg("non_player"));
+            sender.sendMessage(StringHelper.configLang("non_player"));
             return false;
         }
         Player player = (Player) sender;

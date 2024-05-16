@@ -13,7 +13,7 @@ public class StringHelper {
         return PlaceholderAPI.setPlaceholders(player,str);
     }
 
-    public static String configMsg(String path){
-        return colorCodeReplace(Data.plugin.getConfig().getString("msg."+path));
+    public static String configLang(String path){
+        return colorCodeReplace(Data.plugin.getConfig().getString("lang."+path));
     }
 }

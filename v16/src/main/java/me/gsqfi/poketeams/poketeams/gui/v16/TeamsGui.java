@@ -36,7 +36,7 @@ public class TeamsGui extends ListenerInvHolder {
     public TeamsGui(Player player,String team_name) {
         this.team_name = team_name;
         this.player = player;
-        this.inventory = Bukkit.createInventory(this,45,"§3队伍:"+team_name);
+        this.inventory = Bukkit.createInventory(this,45,StringHelper.configLang("teams_gui_title").replace("{team_name}",team_name));
 
         initInv();
         initEventHolder();
@@ -67,7 +67,7 @@ public class TeamsGui extends ListenerInvHolder {
                     if (pokemon != null) {
                         itemStack = this.getPokemonItemStack(pokemon);
                     } else {
-                        player.sendMessage(StringHelper.configMsg("missing_poke"));
+                        player.sendMessage(StringHelper.configLang("missing_poke"));
                     }
                 }
                 this.pokemons.add(pokemon);
@@ -83,7 +83,7 @@ public class TeamsGui extends ListenerInvHolder {
             //replace team
             ItemStack itemStack = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
             ItemMeta itemMeta = itemStack.getItemMeta();
-            itemMeta.setDisplayName("§a替换队伍");
+            itemMeta.setDisplayName(StringHelper.configLang("teams_gui_substitute_team_button"));
             itemStack.setItemMeta(itemMeta);
             this.inventory.setItem(38,itemStack);
         }
@@ -91,7 +91,7 @@ public class TeamsGui extends ListenerInvHolder {
             //remove button
             ItemStack itemStack = new ItemStack(Material.RED_STAINED_GLASS_PANE);
             ItemMeta itemMeta = itemStack.getItemMeta();
-            itemMeta.setDisplayName("§c删除队伍");
+            itemMeta.setDisplayName(StringHelper.configLang("teams_gui_remove_team_button"));
             itemStack.setItemMeta(itemMeta);
             this.inventory.setItem(42,itemStack);
         }
@@ -100,7 +100,7 @@ public class TeamsGui extends ListenerInvHolder {
     private ItemStack getBarrierItemStack(){
         ItemStack itemStack = new ItemStack(Material.BARRIER);
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName("§c空槽");
+        itemMeta.setDisplayName(StringHelper.configLang("teams_gui_poke_empty_tank"));
         itemStack.setItemMeta(itemMeta);
         return itemStack;
     }
@@ -139,7 +139,7 @@ public class TeamsGui extends ListenerInvHolder {
 /*
                 if (b) player.sendMessage(StringHelper.configMsg("team_in_ranch"));
 */
-                player.sendMessage(StringHelper.configMsg("team_replaced"));
+                player.sendMessage(StringHelper.configLang("team_replaced"));
                 return;
             }
             if (slot == 42){
@@ -147,7 +147,7 @@ public class TeamsGui extends ListenerInvHolder {
                 PlayerData.save();
 
                 player.closeInventory();
-                player.sendMessage(StringHelper.configMsg("team_removed"));
+                player.sendMessage(StringHelper.configLang("team_removed"));
             }
         });
     }

@@ -28,7 +28,7 @@ pokemon_item_format:
 #    - "&3技能: &7%pctools_{box}_{order}_moveset_0% &f| &7%pctools_{box}_{order}_moveset_1% &f| &7%pctools_{box}_{order}_moveset_2% &f| &7%pctools_{box}_{order}_moveset_3% "
 #    - "&b▣ 位置信息"
 #    - "&3页: {box}&f| &3位置:{order}"
-msg:
+lang:
   help:
     - 'HELP'
     - '/poketeams help 帮助'
@@ -45,3 +45,12 @@ msg:
   reach_maximum_team: '&a你的队伍数量已达上线'
   team_in_ranch: '&c队伍中有宝可梦位于牧场,该精灵没有被调出'
   create_team: '&a队伍创建成功!'
+
+  teams_gui_title: '&3队伍{team_name}'
+  teams_gui_substitute_team_button: '&a替换队伍'
+  teams_gui_remove_team_button: '&c删除队伍'
+  teams_gui_poke_empty_tank: '&c空槽'
+
+  teams_list_gui_previous_page_button: '&3上一页'
+  teams_list_gui_next_page_button: '&3下一页'
+  teams_list_gui_team_name: '&3{team_name}'

@@ -21,7 +21,7 @@ public class SeeCmd extends AbstractTabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)){
-            sender.sendMessage(StringHelper.configMsg("non_player"));
+            sender.sendMessage(StringHelper.configLang("non_player"));
             return false;
         }
 
@@ -40,7 +40,7 @@ public class SeeCmd extends AbstractTabExecutor {
             Player player = (Player) sender;
             String team_name = builder.toString();
             if (!PlayerData.getConfig().contains(player.getName()) || !Lists.newArrayList(PlayerData.getConfig().getConfigurationSection(player.getName()).getKeys(false)).contains(team_name)){
-                sender.sendMessage(StringHelper.configMsg("team_not_exist"));
+                sender.sendMessage(StringHelper.configLang("team_not_exist"));
                 return false;
             }
             Inventory inv = new TeamsGui(player, team_name).getInventory();
