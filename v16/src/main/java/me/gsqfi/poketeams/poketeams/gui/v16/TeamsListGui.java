@@ -27,7 +27,7 @@ public class TeamsListGui extends ListenerInvHolder {
 
     public TeamsListGui(Player player,int page){
         this.page = page;
-        this.inventory = Bukkit.createInventory(this,54,"§3你的队伍");
+        this.inventory = Bukkit.createInventory(this,54,StringHelper.configLang("teams_list_gui_title"));
         this.player = player;
         initInv();
         initTeams();

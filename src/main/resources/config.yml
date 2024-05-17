@@ -51,6 +51,7 @@ lang:
   teams_gui_remove_team_button: '&c删除队伍'
   teams_gui_poke_empty_tank: '&c空槽'
 
+  teams_list_gui_title: '&3你的队伍'
   teams_list_gui_previous_page_button: '&3上一页'
   teams_list_gui_next_page_button: '&3下一页'
   teams_list_gui_team_name: '&3{team_name}'
