@@ -48,7 +48,7 @@ public class Main extends JavaPlugin {
         saveDefaultConfig();
         super.reloadConfig();
         PlayerData.init();
-        HelpCmd.help = this.getConfig().getStringList("help").stream().
+        HelpCmd.help = this.getConfig().getStringList("lang.help").stream().
                 map(StringHelper::colorCodeReplace).toArray(String[]::new);
     }
 }
